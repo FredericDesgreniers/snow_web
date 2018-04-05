@@ -10,11 +10,16 @@ use std::{io::prelude::*, net::TcpStream, sync::Arc};
 
 use connection::HttpRequest;
 
+/// A page callback
 struct Callback {
+    /// The pattern to look for in the request path
     pattern: regex::Regex,
+
+    /// The page that will be served
     page: Arc<Box<HttpPage>>,
 }
 
+/// An http server
 pub struct HttpServer {
     callbacks: Vec<Callback>,
 }
@@ -26,7 +31,8 @@ impl HttpServer {
         }
     }
 
-    pub fn callback<T: AsRef<str>>(
+    /// Adds a callback to the http server
+    pub fn add_callback<T: AsRef<str>>(
         &mut self,
         pattern: T,
         page: Arc<Box<HttpPage>>,
@@ -37,6 +43,7 @@ impl HttpServer {
         Ok(())
     }
 
+    /// Handle a connection, servind the appropriate page
     pub fn handle_connection(&self, stream: &mut TcpStream) {
         let mut buffer = [0; 512];
         let bytes_read = stream.read(&mut buffer).unwrap();

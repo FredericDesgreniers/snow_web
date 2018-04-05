@@ -7,6 +7,7 @@ use std::io::{Read, Write};
 use std::io::Result;
 use std::collections::HashMap;
 
+/// Creates a static directory page and registers it in an http server
 #[macro_export]
 macro_rules! static_directory_page(
 	($server: expr, $path: expr, $name: expr ) => {
@@ -17,6 +18,9 @@ macro_rules! static_directory_page(
 	}
 );
 
+/// A static directory page
+/// Keeps in memory and serves every file in the directory
+/// non-recursive
 pub struct StaticDirectoryPage {
     url_path: String,
     header_bytes: Vec<u8>,

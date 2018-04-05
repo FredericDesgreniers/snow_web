@@ -4,6 +4,7 @@ use connection::HttpRequest;
 use std::net::TcpStream;
 use std::io::{Read, Write};
 
+/// Creates a static page and registers it in an http server
 #[macro_export]
 macro_rules! static_page(
 	($server: expr, $path: expr, $name: expr ) => {
@@ -12,6 +13,7 @@ macro_rules! static_page(
 	}
 );
 
+/// An in-memory static page
 pub struct StaticPage {
     header_bytes: Vec<u8>,
     page_bytes: Vec<u8>,

@@ -3,9 +3,12 @@ use std::net::TcpListener;
 use thread_pool::ThreadPool;
 use std::net::TcpStream;
 
+/// Listens to incoming tcp connections
 pub struct TcpStreamListener {}
 
 impl TcpStreamListener {
+    /// Listens to incoming tcp connections, calling a callback each connection
+    /// Callbacks are called using a thread pool
     pub fn listen<T: Fn(TcpStream) + Send + Sync + 'static + Copy>(
         worker_num: usize,
         port: u32,

@@ -8,6 +8,7 @@ use super::HttpRequest;
 
 use std::net::TcpStream;
 
+/// An http page, serves binary content
 pub trait HttpPage: Sync + Send {
     fn process(&self, request: &HttpRequest, connection: &mut TcpStream);
 }
