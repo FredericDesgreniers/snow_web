@@ -24,7 +24,5 @@ lazy_static! {
 }
 
 fn main() {
-    tcp::TcpStreamListener::listen(10, 80, |mut stream| {
-        HTTP_SERVER.handle_connection(&mut stream);
-    }).unwrap();
+    http_server_start!(HTTP_SERVER, 80, 10).unwrap();
 }

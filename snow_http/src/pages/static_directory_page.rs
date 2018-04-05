@@ -13,7 +13,7 @@ macro_rules! static_directory_page(
 	($server: expr, $path: expr, $name: expr ) => {
 	if let Ok(dir_page) = StaticDirectoryPage::new($path, $name) {
 		let index_page = Arc::new(Box::new(dir_page) as Box<HttpPage>);
-			$server.callback(format!("^{}",$path), Arc::clone(&index_page)).unwrap();
+			$server.add_callback(format!("^{}",$path), Arc::clone(&index_page)).unwrap();
 		}
 	}
 );

@@ -9,7 +9,7 @@ use std::io::{Read, Write};
 macro_rules! static_page(
 	($server: expr, $path: expr, $name: expr ) => {
 		let index_page = Arc::new(Box::new(StaticPage::new($name)) as Box<HttpPage>);
-        $server.callback(format!("^{}",$path), Arc::clone(&index_page)).unwrap();
+        $server.add_callback(format!("^{}",$path), Arc::clone(&index_page)).unwrap();
 	}
 );
 

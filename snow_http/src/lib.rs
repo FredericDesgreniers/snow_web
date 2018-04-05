@@ -24,6 +24,15 @@ pub struct HttpServer {
     callbacks: Vec<Callback>,
 }
 
+#[macro_export]
+macro_rules! http_server_start {
+    ($server: expr, $port: expr, $worker_num: expr) => {
+        tcp::TcpStreamListener::listen($worker_num, $port, |mut stream| {
+            $server.handle_connection(&mut stream);
+        })
+    };
+}
+
 impl HttpServer {
     pub fn new() -> Self {
         HttpServer {
