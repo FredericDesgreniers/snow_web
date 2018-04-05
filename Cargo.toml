@@ -1,0 +1,13 @@
+[package]
+name = "snow_web"
+version = "0.1.0"
+authors = ["Frederic Desgreniers <fredericdesgreniers@gmail.com>"]
+
+[dependencies]
+snow_http = {path="snow_http"}
+snow_core = {path="snow_core"}
+
+rayon = "1.0.1"
+lazy_static = "1.0.0"
+
+[workspace]

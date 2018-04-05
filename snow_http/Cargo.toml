@@ -1,0 +1,7 @@
+[package]
+name = "snow_http"
+version = "0.1.0"
+authors = ["Frederic Desgreniers <fredericdesgreniers@gmail.com>"]
+
+[dependencies]
+regex = "0.2.10"
